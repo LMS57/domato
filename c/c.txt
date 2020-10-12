@@ -1,0 +1,288 @@
+<translation_unit>	=	<external_decl>
+<translation_unit>	=	<translation_unit><space><external_decl>
+
+<external_decl>	=	<function_definition>
+<external_decl>	=	<decl>
+
+<function_definition>	=	<decl_specs><space><declarator><space><decl_list><space><compound_stat>
+<function_definition>	=	<declarator><space><decl_list><space><compound_stat>
+<function_definition>	=	<decl_specs><space><declarator><space><compound_stat>
+<function_definition>	=	<declarator><space><compound_stat>
+
+<decl>	=	<decl_specs><space><init_declarator_list><space><;>
+<decl>	=	<decl_specs><space><;>
+
+<decl_list>	=	<decl>
+<decl_list>	=	<decl_list><space><decl>
+
+<decl_specs>	=	<storage_class_spec><space><decl_specs>
+<decl_specs>	=	<storage_class_spec>
+<decl_specs>	=	<type_spec><space><decl_specs>
+<decl_specs>	=	<type_spec>
+<decl_specs>	=	<type_qualifier><space><decl_specs>
+<decl_specs>	=	<type_qualifier>
+
+<storage_class_spec>	=	<auto>
+<storage_class_spec>	=	<register>
+<storage_class_spec>	=	<static>
+<storage_class_spec>	=	<extern>
+<storage_class_spec>	=	<typedef>
+
+<type_spec>	=	<void>
+<type_spec>	=	<char>
+<type_spec>	=	<short>
+<type_spec>	=	<int>
+<type_spec>	=	<long>
+<type_spec>	=	<float>
+<type_spec>	=	<double>
+<type_spec>	=	<signed>
+<type_spec>	=	<unsigned>
+<type_spec>	=	<struct_or_union_spec>
+<type_spec>	=	<enum_spec>
+<type_spec>	=	<typedef_name>
+
+<type_qualifier>	=	<const>
+<type_qualifier>	=	<volatile>
+
+<struct_or_union_spec>	=	<struct_or_union><space><id><space><{><space><struct_decl_list><space><}>
+<struct_or_union_spec>	=	<struct_or_union><space><{><space><struct_decl_list><space><}>
+<struct_or_union_spec>	=	<struct_or_union><space><id>
+
+<struct_or_union>	=	<struct>
+<struct_or_union>	=	<union>
+
+<struct_decl_list>	=	<struct_decl>
+<struct_decl_list>	=	<struct_decl_list><space><struct_decl>
+
+<init_declarator_list>	=	<init_declarator>
+<init_declarator_list>	=	<init_declarator_list><space><,><space><init_declarator>
+
+<init_declarator>	=	<declarator>
+<init_declarator>	=	<declarator><space><=><space><initializer>
+
+<struct_decl>	=	<spec_qualifier_list><space><struct_declarator_list><space><;>
+
+<spec_qualifier_list>	=	<type_spec><space><spec_qualifier_list>
+<spec_qualifier_list>	=	<type_spec>
+<spec_qualifier_list>	=	<type_qualifier><space><spec_qualifier_list>
+<spec_qualifier_list>	=	<type_qualifier>
+
+<struct_declarator_list>	=	<struct_declarator>
+<struct_declarator_list>	=	<struct_declarator_list><space><,><space><struct_declarator>
+
+<struct_declarator>	=	<declarator>
+<struct_declarator>	=	<declarator><space><:><space><const_exp>
+<struct_declarator>	=	<:><space><const_exp>
+
+<enum_spec>	=	<enum><space><id><space><{><space><enumerator_list><space><}>
+<enum_spec>	=	<enum><space><{><space><enumerator_list><space><}>
+<enum_spec>	=	<enum><space><id>
+
+<enumerator_list>	=	<enumerator>
+<enumerator_list>	=	<enumerator_list><space><,><space><enumerator>
+
+<enumerator>	=	<id>
+<enumerator>	=	<id><space><=><space><const_exp>
+
+<declarator>	=	<pointer><space><direct_declarator>
+<declarator>	=	<direct_declarator>
+
+<direct_declarator>	=	<id>
+<direct_declarator>	=	<(><space><declarator><space><)>
+<direct_declarator>	=	<direct_declarator><space><[><space><const_exp><space><]>
+<direct_declarator>	=	<direct_declarator><space><[><space><]>
+<direct_declarator>	=	<direct_declarator><space><(><space><param_type_list><space><)>
+<direct_declarator>	=	<direct_declarator><space><(><space><id_list><space><)>
+<direct_declarator>	=	<direct_declarator><space><(><space><)>
+
+<pointer>	=	<*><space><type_qualifier_list>
+<pointer>	=	<*>
+<pointer>	=	<*><space><type_qualifier_list><space><pointer>
+<pointer>	=	<*><space><pointer>
+
+<type_qualifier_list>	=	<type_qualifier>
+<type_qualifier_list>	=	<type_qualifier_list><space><type_qualifier>
+
+<param_type_list>	=	<param_list>
+<param_type_list>	=	<param_list><space><,><space><.><.><.>
+
+<param_list>	=	<param_decl>
+<param_list>	=	<param_list><space><,><space><param_decl>
+
+<param_decl>	=	<decl_specs><space><declarator>
+<param_decl>	=	<decl_specs><space><abstract_declarator>
+<param_decl>	=	<decl_specs>
+
+<id_list>	=	<id>
+<id_list>	=	<id_list><space><,><space><id>
+
+<initializer>	=	<assignment_exp>
+<initializer>	=	<{><space><initializer_list><space><}>
+<initializer>	=	<{><space><initializer_list><space><,><space><}>
+
+<initializer_list>	=	<initializer>
+<initializer_list>	=	<initializer_list><space><,><space><initializer>
+
+<type_name>	=	<spec_qualifier_list><space><abstract_declarator>
+<type_name>	=	<spec_qualifier_list>
+<type_name>	=	
+<abstract_declarator>	=	<pointer>
+<abstract_declarator>	=	<pointer><space><direct_abstract_declarator>
+<abstract_declarator>	=	<direct_abstract_declarator>
+
+<direct_abstract_declarator:>	=	<abstract_declarator><space><)>
+<direct_abstract_declarator:>	=	<direct_abstract_declarator><space><[><space><const_exp><space><]>
+<direct_abstract_declarator:>	=	<[><space><const_exp><space><]>
+<direct_abstract_declarator:>	=	<direct_abstract_declarator><space><[><space><]>
+<direct_abstract_declarator:>	=	<[><space><]>
+<direct_abstract_declarator:>	=	<direct_abstract_declarator><space><(><space><param_type_list><space><)>
+<direct_abstract_declarator:>	=	<(><space><param_type_list><space><)>
+<direct_abstract_declarator:>	=	<direct_abstract_declarator><space><(><space><)>
+<direct_abstract_declarator:>	=	<(><space><)>
+
+<typedef_name>	=	<id>
+
+<stat>	=	<labeled_stat>
+<stat>	=	<exp_stat>
+<stat>	=	<compound_stat>
+<stat>	=	<selection_stat>
+<stat>	=	<iteration_stat>
+<stat>	=	<jump_stat>
+
+<labeled_stat>	=	<id><space><:><space><stat>
+<labeled_stat>	=	<case><space><const_exp><space><:><space><stat>
+<labeled_stat>	=	<default><space><:><space><stat>
+
+<exp_stat>	=	<exp><space><;>
+<exp_stat>	=	<;>
+
+<compound_stat>	=	<{><space><decl_list><space><stat_list><space><}>
+<compound_stat>	=	<{><space><stat_list><space><}>
+<compound_stat>	=	<{><space><decl_list><space><}>
+<compound_stat>	=	<{><space><}>
+
+<stat_list>	=	<stat>
+<stat_list>	=	<stat_list><space><stat>
+
+<selection_stat>	=	<if><space><(><space><exp><space><)><space><stat>
+<selection_stat>	=	<if><space><(><space><exp><space><)><space><stat><space><else><space><stat>
+<selection_stat>	=	<switch><space><(><space><exp><space><)><space><stat>
+
+<iteration_stat>	=	<while><space><(><space><exp><space><)><space><stat>
+<iteration_stat>	=	<do><space><stat><space><while><space><(><space><exp><space><)><space><;>
+<iteration_stat>	=	<for><space><(><space><exp><space><;><space><exp><space><;><space><exp><space><)><space><stat>
+<iteration_stat>	=	<for><space><(><space><exp><space><;><space><exp><space><;><space><)><space><stat>
+<iteration_stat>	=	<for><space><(><space><exp><space><;><space><;><space><exp><space><)><space><stat>
+<iteration_stat>	=	<for><space><(><space><exp><space><;><space><;><space><)><space><stat>
+<iteration_stat>	=	<for><space><(><space><;><space><exp><space><;><space><exp><space><)><space><stat>
+<iteration_stat>	=	<for><space><(><space><;><space><exp><space><;><space><)><space><stat>
+<iteration_stat>	=	<for><space><(><space><;><space><;><space><exp><space><)><space><stat>
+<iteration_stat>	=	<for><space><(><space><;><space><;><space><)><space><stat>
+
+<jump_stat>	=	<goto><space><id><space><;>
+<jump_stat>	=	<continue><space><;>
+<jump_stat>	=	<break><space><;>
+<jump_stat>	=	<return><space><exp><space><;>
+<jump_stat>	=	<return><space><;>
+
+<exp>	=	<assignment_exp>
+<exp>	=	<exp><space><,><space><assignment_exp>
+
+<assignment_exp>	=	<conditional_exp>
+<assignment_exp>	=	<unary_exp><space><assignment_operator><space><assignment_exp>
+<assignment_exp>	=	
+<assignment_operator>	=	<=>
+<assignment_operator>	=	<*><=>
+<assignment_operator>	=	</><=>
+<assignment_operator>	=	<%><=>
+<assignment_operator>	=	<+><=>
+<assignment_operator>	=	<-><=>
+<assignment_operator>	=	<lt><lt><=>
+<assignment_operator>	=	<gt><gt><=>
+<assignment_operator>	=	<&><=>
+<assignment_operator>	=	<^><=>
+<assignment_operator>	=	<|><=>
+
+<conditional_exp>	=	<logical_or_exp>
+<conditional_exp>	=	<logical_or_exp><space><?><space><exp><space><:><space><conditional_exp>
+
+<const_exp>	=	<conditional_exp>
+
+<logical_or_exp>	=	<logical_and_exp>
+<logical_or_exp>	=	<logical_or_exp><space><|><|><space><logical_and_exp>
+
+<logical_and_exp>	=	<inclusive_or_exp>
+<logical_and_exp>	=	<logical_and_exp><space><&><&><space><inclusive_or_exp>
+
+<inclusive_or_exp>	=	<exclusive_or_exp>
+<inclusive_or_exp>	=	<inclusive_or_exp><space><|><space><exclusive_or_exp>
+
+<exclusive_or_exp>	=	<and_exp>
+<exclusive_or_exp>	=	<exclusive_or_exp><space><^><space><and_exp>
+
+<and_exp>	=	<equality_exp>
+<and_exp>	=	<and_exp><space><&><space><equality_exp>
+
+<equality_exp>	=	<relational_exp>
+<equality_exp>	=	<equality_exp><space><=><=><space><relational_exp>
+<equality_exp>	=	<equality_exp><space><!><=><space><relational_exp>
+
+<relational_exp>	=	<shift_expression>
+<relational_exp>	=	<relational_exp><space><lt><space><shift_expression>
+<relational_exp>	=	<relational_exp><space><gt><space><shift_expression>
+<relational_exp>	=	<relational_exp><space><lt><=><space><shift_expression>
+<relational_exp>	=	<relational_exp><space><gt><=><space><shift_expression>
+
+<shift_expression>	=	<additive_exp>
+<shift_expression>	=	<shift_expression><space><lt><lt><space><additive_exp>
+<shift_expression>	=	<shift_expression><space><gt><gt><space><additive_exp>
+
+<additive_exp>	=	<mult_exp>
+<additive_exp>	=	<additive_exp><space><+><space><mult_exp>
+<additive_exp>	=	<additive_exp><space><-><space><mult_exp>
+
+<mult_exp>	=	<cast_exp>
+<mult_exp>	=	<mult_exp><space><*><space><cast_exp>
+<mult_exp>	=	<mult_exp><space></><space><cast_exp>
+<mult_exp>	=	<mult_exp><space><%><space><cast_exp>
+
+<cast_exp>	=	<unary_exp>
+<cast_exp>	=	<(><space><type_name><space><)><space><cast_exp>
+
+<unary_exp>	=	<postfix_exp>
+<unary_exp>	=	<+><+><space><unary_exp>
+<unary_exp>	=	<-><-><space><unary_exp>
+<unary_exp>	=	<unary_operator><space><cast_exp>
+<unary_exp>	=	<sizeof><space><unary_exp>
+<unary_exp>	=	<sizeof><space><(><space><type_name><space><)>
+
+<unary_operator>	=	<&>
+<unary_operator>	=	<*>
+<unary_operator>	=	<+>
+<unary_operator>	=	<->
+<unary_operator>	=	<~>
+<unary_operator>	=	<!>
+
+<postfix_exp>	=	<primary_exp>
+<postfix_exp>	=	<postfix_exp><space><[><space><exp><space><]>
+<postfix_exp>	=	<postfix_exp><space><(><space><argument_exp_list><space><)>
+<postfix_exp>	=	<postfix_exp><space><(><space><)>
+<postfix_exp>	=	<postfix_exp><space><.><space><id>
+<postfix_exp>	=	<postfix_exp><space><-><gt><space><id>
+<postfix_exp>	=	<postfix_exp><space><+><+>
+<postfix_exp>	=	<postfix_exp><space><-><->
+
+<primary_exp>	=	<id>
+<primary_exp>	=	<const>
+<primary_exp>	=	<string>
+<primary_exp>	=	<(><space><exp><space><)>
+
+<argument_exp_list>	=	<assignment_exp>
+<argument_exp_list>	=	<argument_exp_list><space><,><space><assignment_exp>
+
+<const>	=	<int_const>
+<const>	=	<char_const>
+<const>	=	<float_const>
+<const>	=	<enumeration_const>
+
+
