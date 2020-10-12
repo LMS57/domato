@@ -1,3 +1,13 @@
+<root root=true> = <lines count=1024>
+
+!lineguard try { <line> } catch (Throwable $e) { }
+
+<fuzzvoid> = 
+
+<fuzzbool> = true
+<fuzzbool> = false
+
+
 <translation_unit>	=	<external_decl>
 <translation_unit>	=	<translation_unit><space><external_decl>
 
@@ -285,4 +295,44 @@
 <const>	=	<float_const>
 <const>	=	<enumeration_const>
 
+<for>	=	for
+<while>	=	while
+<if>	=	if
+<else>	=	else
+<goto>	=	goto
+<switch>	=	switch
+<id>	=	id
+<const>	=	const
+<int>	=	int
+<char>	=	char
+<float>	=	float
+<void>	=	void
+<short>	=	short
+<long>	=	long
+<double>	=	double
+<signed>	=	signed
+<unsigned>	=	unsigned
+<union>	=	union
+<struct>	=	struct
+<enum>	=	enum
+<typedef>	=	typedef
+<extern>	=	extern
+<static>	=	static
+<auto>	=	auto
+<register>	=	register
+<case>	=	case
+<sizeof>	=	sizeof
+<do>	=	do
+<char_const>	=	<const><space><char>
+<return>	=	return
+<volatile>	=	volatile
+<default>	=	default
+
+### LINES
+
+!begin lines
+
+<stat>
+
+!end lines
 
