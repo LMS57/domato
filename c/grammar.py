@@ -305,7 +305,6 @@ class Grammar(object):
 
         while len(context['lines']) < num_lines:
             tmp_context = context.copy()
-            print(tmp_context)
             try:
                 if (random.random() < self._interesting_line_prob) and (len(tmp_context['interesting_lines']) > 0):
                     tmp_context['force_var_reuse'] = True

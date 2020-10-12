@@ -140,15 +140,15 @@
 <abstract_declarator>	=	<pointer><space><direct_abstract_declarator>
 <abstract_declarator>	=	<direct_abstract_declarator>
 
-<direct_abstract_declarator:>	=	<abstract_declarator><space><)>
-<direct_abstract_declarator:>	=	<direct_abstract_declarator><space><[><space><const_exp><space><]>
-<direct_abstract_declarator:>	=	<[><space><const_exp><space><]>
-<direct_abstract_declarator:>	=	<direct_abstract_declarator><space><[><space><]>
-<direct_abstract_declarator:>	=	<[><space><]>
-<direct_abstract_declarator:>	=	<direct_abstract_declarator><space><(><space><param_type_list><space><)>
-<direct_abstract_declarator:>	=	<(><space><param_type_list><space><)>
-<direct_abstract_declarator:>	=	<direct_abstract_declarator><space><(><space><)>
-<direct_abstract_declarator:>	=	<(><space><)>
+<direct_abstract_declarator>	=	<abstract_declarator><space><)>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><space><[><space><const_exp><space><]>
+<direct_abstract_declarator>	=	<[><space><const_exp><space><]>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><space><[><space><]>
+<direct_abstract_declarator>	=	<[><space><]>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><space><(><space><param_type_list><space><)>
+<direct_abstract_declarator>	=	<(><space><param_type_list><space><)>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><space><(><space><)>
+<direct_abstract_declarator>	=	<(><space><)>
 
 <typedef_name>	=	<id>
 
@@ -327,6 +327,11 @@
 <return>	=	return
 <volatile>	=	volatile
 <default>	=	default
+<int_const>	=	<const><space><int>
+<float_const>	=	<const><space><float>
+<continue>	=	continue
+<break>	=	break
+<enumeration_const>	=	<const><space><enum>
 
 ### LINES
 
