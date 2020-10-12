@@ -130,7 +130,7 @@ class Grammar(object):
             'tab': chr(9),
             '!': '!',
             '(': '(',
-            ')': ')',
+            'right_paren': ')',
             '{': '{',
             '}': '}',
             '[': '[',
@@ -166,7 +166,6 @@ class Grammar(object):
             'double': self._generate_float,
             'char': self._generate_char,
             'string': self._generate_string,
-            'htmlsafestring': self._generate_html_string,
             'hex': self._generate_hex,
             'import': self._generate_import,
             'lines': self._generate_lines
@@ -232,16 +231,16 @@ class Grammar(object):
         if 'code' in tag:
             return chr(self._string_to_int(tag['code']))
 
-        min_value = self._string_to_int(tag.get('min', '0'))
-        max_value = self._string_to_int(tag.get('max', '255'))
+        min_value = self._string_to_int(tag.get('min', '32'))
+        max_value = self._string_to_int(tag.get('max', '127'))
         if min_value > max_value:
             raise GrammarError('Range error in char tag')
         return chr(random.randint(min_value, max_value))
 
     def _generate_string(self, tag):
         """Generates a random string."""
-        min_value = self._string_to_int(tag.get('min', '0'))
-        max_value = self._string_to_int(tag.get('max', '255'))
+        min_value = self._string_to_int(tag.get('min', '32'))
+        max_value = self._string_to_int(tag.get('max', '127'))
         if min_value > max_value:
             raise GrammarError('Range error in string tag')
         minlen = self._string_to_int(tag.get('minlength', '0'))
@@ -250,10 +249,8 @@ class Grammar(object):
         charset = range(min_value, max_value + 1)
         ret_list = [chr(charset[int(random.random() * len(charset))])
                     for _ in range(length)]
-        return ''.join(ret_list)
+        return '"'+''.join(ret_list)+'"'
 
-    def _generate_html_string(self, tag):
-        return _escape(self._generate_string(tag), quote=True)
 
     def _generate_hex(self, tag):
         """Generates a single hex digit."""
@@ -316,13 +313,16 @@ class Grammar(object):
                 context = tmp_context
             except RecursionError as e:
                 print('Warning: ' + str(e))
+        '''
         if not self._line_guard:
             guarded_lines = context['lines']
         else:
             guarded_lines = []
             for line in context['lines']:
                 guarded_lines.append(self._line_guard.replace('<line>', line))
-        return '\n'.join(guarded_lines)
+        print(guarded_lines)
+        '''
+        return '\n'.join(context['lines'])
 
     def _exec_function(self, function_name, attributes, context, ret_val):
         """Executes user-defined python code."""

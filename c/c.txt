@@ -98,12 +98,12 @@
 <declarator>	=	<direct_declarator>
 
 <direct_declarator>	=	<id>
-<direct_declarator>	=	<(><space><declarator><space><)>
+<direct_declarator>	=	<(><space><declarator><space><right_paren>
 <direct_declarator>	=	<direct_declarator><space><[><space><const_exp><space><]>
 <direct_declarator>	=	<direct_declarator><space><[><space><]>
-<direct_declarator>	=	<direct_declarator><space><(><space><param_type_list><space><)>
-<direct_declarator>	=	<direct_declarator><space><(><space><id_list><space><)>
-<direct_declarator>	=	<direct_declarator><space><(><space><)>
+<direct_declarator>	=	<direct_declarator><space><(><space><param_type_list><space><right_paren>
+<direct_declarator>	=	<direct_declarator><space><(><space><id_list><space><right_paren>
+<direct_declarator>	=	<direct_declarator><space><(><space><right_paren>
 
 <pointer>	=	<*><space><type_qualifier_list>
 <pointer>	=	<*>
@@ -135,20 +135,20 @@
 
 <type_name>	=	<spec_qualifier_list><space><abstract_declarator>
 <type_name>	=	<spec_qualifier_list>
-<type_name>	=	
+
 <abstract_declarator>	=	<pointer>
 <abstract_declarator>	=	<pointer><space><direct_abstract_declarator>
 <abstract_declarator>	=	<direct_abstract_declarator>
 
-<direct_abstract_declarator>	=	<abstract_declarator><space><)>
+<direct_abstract_declarator>	=	<abstract_declarator><space><right_paren>
 <direct_abstract_declarator>	=	<direct_abstract_declarator><space><[><space><const_exp><space><]>
 <direct_abstract_declarator>	=	<[><space><const_exp><space><]>
 <direct_abstract_declarator>	=	<direct_abstract_declarator><space><[><space><]>
 <direct_abstract_declarator>	=	<[><space><]>
-<direct_abstract_declarator>	=	<direct_abstract_declarator><space><(><space><param_type_list><space><)>
-<direct_abstract_declarator>	=	<(><space><param_type_list><space><)>
-<direct_abstract_declarator>	=	<direct_abstract_declarator><space><(><space><)>
-<direct_abstract_declarator>	=	<(><space><)>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><space><(><space><param_type_list><space><right_paren>
+<direct_abstract_declarator>	=	<(><space><param_type_list><space><right_paren>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><space><(><space><right_paren>
+<direct_abstract_declarator>	=	<(><space><right_paren>
 
 <typedef_name>	=	<id>
 
@@ -174,20 +174,20 @@
 <stat_list>	=	<stat>
 <stat_list>	=	<stat_list><space><stat>
 
-<selection_stat>	=	<if><space><(><space><exp><space><)><space><stat>
-<selection_stat>	=	<if><space><(><space><exp><space><)><space><stat><space><else><space><stat>
-<selection_stat>	=	<switch><space><(><space><exp><space><)><space><stat>
+<selection_stat>	=	<if><space><(><space><exp><space><right_paren><space><stat>
+<selection_stat>	=	<if><space><(><space><exp><space><right_paren><space><stat><space><else><space><stat>
+<selection_stat>	=	<switch><space><(><space><exp><space><right_paren><space><stat>
 
-<iteration_stat>	=	<while><space><(><space><exp><space><)><space><stat>
-<iteration_stat>	=	<do><space><stat><space><while><space><(><space><exp><space><)><space><;>
-<iteration_stat>	=	<for><space><(><space><exp><space><;><space><exp><space><;><space><exp><space><)><space><stat>
-<iteration_stat>	=	<for><space><(><space><exp><space><;><space><exp><space><;><space><)><space><stat>
-<iteration_stat>	=	<for><space><(><space><exp><space><;><space><;><space><exp><space><)><space><stat>
-<iteration_stat>	=	<for><space><(><space><exp><space><;><space><;><space><)><space><stat>
-<iteration_stat>	=	<for><space><(><space><;><space><exp><space><;><space><exp><space><)><space><stat>
-<iteration_stat>	=	<for><space><(><space><;><space><exp><space><;><space><)><space><stat>
-<iteration_stat>	=	<for><space><(><space><;><space><;><space><exp><space><)><space><stat>
-<iteration_stat>	=	<for><space><(><space><;><space><;><space><)><space><stat>
+<iteration_stat>	=	<while><space><(><space><exp><space><right_paren><space><stat>
+<iteration_stat>	=	<do><space><stat><space><while><space><(><space><exp><space><right_paren><space><;>
+<iteration_stat>	=	<for><space><(><space><exp><space><;><space><exp><space><;><space><exp><space><right_paren><space><stat>
+<iteration_stat>	=	<for><space><(><space><exp><space><;><space><exp><space><;><space><right_paren><space><stat>
+<iteration_stat>	=	<for><space><(><space><exp><space><;><space><;><space><exp><space><right_paren><space><stat>
+<iteration_stat>	=	<for><space><(><space><exp><space><;><space><;><space><right_paren><space><stat>
+<iteration_stat>	=	<for><space><(><space><;><space><exp><space><;><space><exp><space><right_paren><space><stat>
+<iteration_stat>	=	<for><space><(><space><;><space><exp><space><;><space><right_paren><space><stat>
+<iteration_stat>	=	<for><space><(><space><;><space><;><space><exp><space><right_paren><space><stat>
+<iteration_stat>	=	<for><space><(><space><;><space><;><space><right_paren><space><stat>
 
 <jump_stat>	=	<goto><space><id><space><;>
 <jump_stat>	=	<continue><space><;>
@@ -257,14 +257,14 @@
 <mult_exp>	=	<mult_exp><space><%><space><cast_exp>
 
 <cast_exp>	=	<unary_exp>
-<cast_exp>	=	<(><space><type_name><space><)><space><cast_exp>
+<cast_exp>	=	<(><space><type_name><space><right_paren><space><cast_exp>
 
 <unary_exp>	=	<postfix_exp>
 <unary_exp>	=	<+><+><space><unary_exp>
 <unary_exp>	=	<-><-><space><unary_exp>
 <unary_exp>	=	<unary_operator><space><cast_exp>
 <unary_exp>	=	<sizeof><space><unary_exp>
-<unary_exp>	=	<sizeof><space><(><space><type_name><space><)>
+<unary_exp>	=	<sizeof><space><(><space><type_name><space><right_paren>
 
 <unary_operator>	=	<&>
 <unary_operator>	=	<*>
@@ -275,8 +275,8 @@
 
 <postfix_exp>	=	<primary_exp>
 <postfix_exp>	=	<postfix_exp><space><[><space><exp><space><]>
-<postfix_exp>	=	<postfix_exp><space><(><space><argument_exp_list><space><)>
-<postfix_exp>	=	<postfix_exp><space><(><space><)>
+<postfix_exp>	=	<postfix_exp><space><(><space><argument_exp_list><space><right_paren>
+<postfix_exp>	=	<postfix_exp><space><(><space><right_paren>
 <postfix_exp>	=	<postfix_exp><space><.><space><id>
 <postfix_exp>	=	<postfix_exp><space><-><gt><space><id>
 <postfix_exp>	=	<postfix_exp><space><+><+>
@@ -285,7 +285,7 @@
 <primary_exp>	=	<id>
 <primary_exp>	=	<const>
 <primary_exp>	=	<string>
-<primary_exp>	=	<(><space><exp><space><)>
+<primary_exp>	=	<(><space><exp><space><right_paren>
 
 <argument_exp_list>	=	<assignment_exp>
 <argument_exp_list>	=	<argument_exp_list><space><,><space><assignment_exp>
@@ -301,7 +301,7 @@
 <else>	=	else
 <goto>	=	goto
 <switch>	=	switch
-<id>	=	id
+<id>	=	var<int min=0 max=100>
 <const>	=	const
 <int>	=	int
 <char>	=	char
