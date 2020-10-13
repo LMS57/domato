@@ -1,4 +1,4 @@
-data = open('./c.txt').readlines()
+data = open('./original').readlines()
 
 
 alphabet = {
@@ -15,7 +15,7 @@ alphabet = {
         "&":"&",
         "*":"*",
         "(":"(",
-        ")":")",
+        ")":"right_paran",
         "[":"[",
         "]":"]",
         "{":"{",

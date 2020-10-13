@@ -139,6 +139,7 @@ class Grammar(object):
             'any': self._generate_any,
             'hex': self._generate_hex,
             'string': self._valid_alphabet2,
+            'char': self._generate_char,
         }
         '''
             'int': self._generate_int,
@@ -176,8 +177,8 @@ class Grammar(object):
 
     def _valid_alphabet2(self, tag):
         alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'
-        minlen = 1
-        maxlen = 31
+        minlen = 0
+        maxlen = 30
         length = random.randint(minlen, maxlen)
         charset = range(0, len(alphabet))
         ret_list = [alphabet[int(random.random() * len(charset))] for _ in range(length)]
@@ -231,7 +232,7 @@ class Grammar(object):
             return chr(self._string_to_int(tag['code']))
 
         min_value = self._string_to_int(tag.get('min', '32'))
-        max_value = self._string_to_int(tag.get('max', '127'))
+        max_value = self._string_to_int(tag.get('max', '126'))
         if min_value > max_value:
             raise GrammarError('Range error in char tag')
         return chr(random.randint(min_value, max_value))
@@ -240,7 +241,15 @@ class Grammar(object):
         bad = tag.get('bad','')
         minchar = 32
         maxchar = 127
-        return chr(random.randint(minchar,maxchar))
+        t = 0
+        while(t!=1):
+            tmp = random.randint(minchar, maxchar);
+            for x in bad:
+                if x != chr(tmp):
+                    t = 1
+                    break
+
+        return chr(tmp)
 
     
     def _generate_string(self, tag):

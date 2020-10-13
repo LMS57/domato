@@ -1,343 +1,434 @@
-<root root=true> = <lines count=1024>
 
-!lineguard try { <line> } catch (Throwable $e) { }
+<primary_expression>	=	<IDENTIFIER>
+<primary_expression>	=	<CONSTANT>
+<primary_expression>	=	<STRING_LITERAL>
+<primary_expression>	=	<(><expression><right_paran>
 
-<fuzzvoid> = 
+<postfix_expression>	=	<primary_expression>
+<postfix_expression>	=	<postfix_expression><[><expression><]>
+<postfix_expression>	=	<postfix_expression><(><right_paran>
+<postfix_expression>	=	<postfix_expression><(><argument_expression_list><right_paran>
+<postfix_expression>	=	<postfix_expression><.><IDENTIFIER>
+<postfix_expression>	=	<postfix_expression><space><PTR_OP><space><IDENTIFIER>
+<postfix_expression>	=	<postfix_expression><space><INC_OP>
+<postfix_expression>	=	<postfix_expression><space><DEC_OP>
 
-<fuzzbool> = true
-<fuzzbool> = false
+<argument_expression_list>	=	<assignment_expression>
+<argument_expression_list>	=	<argument_expression_list><,><assignment_expression>
 
-
-<translation_unit>	=	<external_decl>
-<translation_unit>	=	<translation_unit><space><external_decl>
-
-<external_decl>	=	<function_definition>
-<external_decl>	=	<decl>
-
-<function_definition>	=	<decl_specs><space><declarator><space><decl_list><space><compound_stat>
-<function_definition>	=	<declarator><space><decl_list><space><compound_stat>
-<function_definition>	=	<decl_specs><space><declarator><space><compound_stat>
-<function_definition>	=	<declarator><space><compound_stat>
-
-<decl>	=	<decl_specs><space><init_declarator_list><space><;>
-<decl>	=	<decl_specs><space><;>
-
-<decl_list>	=	<decl>
-<decl_list>	=	<decl_list><space><decl>
-
-<decl_specs>	=	<storage_class_spec><space><decl_specs>
-<decl_specs>	=	<storage_class_spec>
-<decl_specs>	=	<type_spec><space><decl_specs>
-<decl_specs>	=	<type_spec>
-<decl_specs>	=	<type_qualifier><space><decl_specs>
-<decl_specs>	=	<type_qualifier>
-
-<storage_class_spec>	=	<auto>
-<storage_class_spec>	=	<register>
-<storage_class_spec>	=	<static>
-<storage_class_spec>	=	<extern>
-<storage_class_spec>	=	<typedef>
-
-<type_spec>	=	<void>
-<type_spec>	=	<char>
-<type_spec>	=	<short>
-<type_spec>	=	<int>
-<type_spec>	=	<long>
-<type_spec>	=	<float>
-<type_spec>	=	<double>
-<type_spec>	=	<signed>
-<type_spec>	=	<unsigned>
-<type_spec>	=	<struct_or_union_spec>
-<type_spec>	=	<enum_spec>
-<type_spec>	=	<typedef_name>
-
-<type_qualifier>	=	<const>
-<type_qualifier>	=	<volatile>
-
-<struct_or_union_spec>	=	<struct_or_union><space><id><space><{><space><struct_decl_list><space><}>
-<struct_or_union_spec>	=	<struct_or_union><space><{><space><struct_decl_list><space><}>
-<struct_or_union_spec>	=	<struct_or_union><space><id>
-
-<struct_or_union>	=	<struct>
-<struct_or_union>	=	<union>
-
-<struct_decl_list>	=	<struct_decl>
-<struct_decl_list>	=	<struct_decl_list><space><struct_decl>
-
-<init_declarator_list>	=	<init_declarator>
-<init_declarator_list>	=	<init_declarator_list><space><,><space><init_declarator>
-
-<init_declarator>	=	<declarator>
-<init_declarator>	=	<declarator><space><=><space><initializer>
-
-<struct_decl>	=	<spec_qualifier_list><space><struct_declarator_list><space><;>
-
-<spec_qualifier_list>	=	<type_spec><space><spec_qualifier_list>
-<spec_qualifier_list>	=	<type_spec>
-<spec_qualifier_list>	=	<type_qualifier><space><spec_qualifier_list>
-<spec_qualifier_list>	=	<type_qualifier>
-
-<struct_declarator_list>	=	<struct_declarator>
-<struct_declarator_list>	=	<struct_declarator_list><space><,><space><struct_declarator>
-
-<struct_declarator>	=	<declarator>
-<struct_declarator>	=	<declarator><space><:><space><const_exp>
-<struct_declarator>	=	<:><space><const_exp>
-
-<enum_spec>	=	<enum><space><id><space><{><space><enumerator_list><space><}>
-<enum_spec>	=	<enum><space><{><space><enumerator_list><space><}>
-<enum_spec>	=	<enum><space><id>
-
-<enumerator_list>	=	<enumerator>
-<enumerator_list>	=	<enumerator_list><space><,><space><enumerator>
-
-<enumerator>	=	<id>
-<enumerator>	=	<id><space><=><space><const_exp>
-
-<declarator>	=	<pointer><space><direct_declarator>
-<declarator>	=	<direct_declarator>
-
-<direct_declarator>	=	<id>
-<direct_declarator>	=	<(><space><declarator><space><right_paren>
-<direct_declarator>	=	<direct_declarator><space><[><space><const_exp><space><]>
-<direct_declarator>	=	<direct_declarator><space><[><space><]>
-<direct_declarator>	=	<direct_declarator><space><(><space><param_type_list><space><right_paren>
-<direct_declarator>	=	<direct_declarator><space><(><space><id_list><space><right_paren>
-<direct_declarator>	=	<direct_declarator><space><(><space><right_paren>
-
-<pointer>	=	<*><space><type_qualifier_list>
-<pointer>	=	<*>
-<pointer>	=	<*><space><type_qualifier_list><space><pointer>
-<pointer>	=	<*><space><pointer>
-
-<type_qualifier_list>	=	<type_qualifier>
-<type_qualifier_list>	=	<type_qualifier_list><space><type_qualifier>
-
-<param_type_list>	=	<param_list>
-<param_type_list>	=	<param_list><space><,><space><.><.><.>
-
-<param_list>	=	<param_decl>
-<param_list>	=	<param_list><space><,><space><param_decl>
-
-<param_decl>	=	<decl_specs><space><declarator>
-<param_decl>	=	<decl_specs><space><abstract_declarator>
-<param_decl>	=	<decl_specs>
-
-<id_list>	=	<id>
-<id_list>	=	<id_list><space><,><space><id>
-
-<initializer>	=	<assignment_exp>
-<initializer>	=	<{><space><initializer_list><space><}>
-<initializer>	=	<{><space><initializer_list><space><,><space><}>
-
-<initializer_list>	=	<initializer>
-<initializer_list>	=	<initializer_list><space><,><space><initializer>
-
-<type_name>	=	<spec_qualifier_list><space><abstract_declarator>
-<type_name>	=	<spec_qualifier_list>
-
-<abstract_declarator>	=	<pointer>
-<abstract_declarator>	=	<pointer><space><direct_abstract_declarator>
-<abstract_declarator>	=	<direct_abstract_declarator>
-
-<direct_abstract_declarator>	=	<abstract_declarator><space><right_paren>
-<direct_abstract_declarator>	=	<direct_abstract_declarator><space><[><space><const_exp><space><]>
-<direct_abstract_declarator>	=	<[><space><const_exp><space><]>
-<direct_abstract_declarator>	=	<direct_abstract_declarator><space><[><space><]>
-<direct_abstract_declarator>	=	<[><space><]>
-<direct_abstract_declarator>	=	<direct_abstract_declarator><space><(><space><param_type_list><space><right_paren>
-<direct_abstract_declarator>	=	<(><space><param_type_list><space><right_paren>
-<direct_abstract_declarator>	=	<direct_abstract_declarator><space><(><space><right_paren>
-<direct_abstract_declarator>	=	<(><space><right_paren>
-
-<typedef_name>	=	<id>
-
-<stat>	=	<labeled_stat>
-<stat>	=	<exp_stat>
-<stat>	=	<compound_stat>
-<stat>	=	<selection_stat>
-<stat>	=	<iteration_stat>
-<stat>	=	<jump_stat>
-
-<labeled_stat>	=	<id><space><:><space><stat>
-<labeled_stat>	=	<case><space><const_exp><space><:><space><stat>
-<labeled_stat>	=	<default><space><:><space><stat>
-
-<exp_stat>	=	<exp><space><;>
-<exp_stat>	=	<;>
-
-<compound_stat>	=	<{><space><decl_list><space><stat_list><space><}>
-<compound_stat>	=	<{><space><stat_list><space><}>
-<compound_stat>	=	<{><space><decl_list><space><}>
-<compound_stat>	=	<{><space><}>
-
-<stat_list>	=	<stat>
-<stat_list>	=	<stat_list><space><stat>
-
-<selection_stat>	=	<if><space><(><space><exp><space><right_paren><space><stat>
-<selection_stat>	=	<if><space><(><space><exp><space><right_paren><space><stat><space><else><space><stat>
-<selection_stat>	=	<switch><space><(><space><exp><space><right_paren><space><stat>
-
-<iteration_stat>	=	<while><space><(><space><exp><space><right_paren><space><stat>
-<iteration_stat>	=	<do><space><stat><space><while><space><(><space><exp><space><right_paren><space><;>
-<iteration_stat>	=	<for><space><(><space><exp><space><;><space><exp><space><;><space><exp><space><right_paren><space><stat>
-<iteration_stat>	=	<for><space><(><space><exp><space><;><space><exp><space><;><space><right_paren><space><stat>
-<iteration_stat>	=	<for><space><(><space><exp><space><;><space><;><space><exp><space><right_paren><space><stat>
-<iteration_stat>	=	<for><space><(><space><exp><space><;><space><;><space><right_paren><space><stat>
-<iteration_stat>	=	<for><space><(><space><;><space><exp><space><;><space><exp><space><right_paren><space><stat>
-<iteration_stat>	=	<for><space><(><space><;><space><exp><space><;><space><right_paren><space><stat>
-<iteration_stat>	=	<for><space><(><space><;><space><;><space><exp><space><right_paren><space><stat>
-<iteration_stat>	=	<for><space><(><space><;><space><;><space><right_paren><space><stat>
-
-<jump_stat>	=	<goto><space><id><space><;>
-<jump_stat>	=	<continue><space><;>
-<jump_stat>	=	<break><space><;>
-<jump_stat>	=	<return><space><exp><space><;>
-<jump_stat>	=	<return><space><;>
-
-<exp>	=	<assignment_exp>
-<exp>	=	<exp><space><,><space><assignment_exp>
-
-<assignment_exp>	=	<conditional_exp>
-<assignment_exp>	=	<unary_exp><space><assignment_operator><space><assignment_exp>
-<assignment_exp>	=	
-<assignment_operator>	=	<=>
-<assignment_operator>	=	<*><=>
-<assignment_operator>	=	</><=>
-<assignment_operator>	=	<%><=>
-<assignment_operator>	=	<+><=>
-<assignment_operator>	=	<-><=>
-<assignment_operator>	=	<lt><lt><=>
-<assignment_operator>	=	<gt><gt><=>
-<assignment_operator>	=	<&><=>
-<assignment_operator>	=	<^><=>
-<assignment_operator>	=	<|><=>
-
-<conditional_exp>	=	<logical_or_exp>
-<conditional_exp>	=	<logical_or_exp><space><?><space><exp><space><:><space><conditional_exp>
-
-<const_exp>	=	<conditional_exp>
-
-<logical_or_exp>	=	<logical_and_exp>
-<logical_or_exp>	=	<logical_or_exp><space><|><|><space><logical_and_exp>
-
-<logical_and_exp>	=	<inclusive_or_exp>
-<logical_and_exp>	=	<logical_and_exp><space><&><&><space><inclusive_or_exp>
-
-<inclusive_or_exp>	=	<exclusive_or_exp>
-<inclusive_or_exp>	=	<inclusive_or_exp><space><|><space><exclusive_or_exp>
-
-<exclusive_or_exp>	=	<and_exp>
-<exclusive_or_exp>	=	<exclusive_or_exp><space><^><space><and_exp>
-
-<and_exp>	=	<equality_exp>
-<and_exp>	=	<and_exp><space><&><space><equality_exp>
-
-<equality_exp>	=	<relational_exp>
-<equality_exp>	=	<equality_exp><space><=><=><space><relational_exp>
-<equality_exp>	=	<equality_exp><space><!><=><space><relational_exp>
-
-<relational_exp>	=	<shift_expression>
-<relational_exp>	=	<relational_exp><space><lt><space><shift_expression>
-<relational_exp>	=	<relational_exp><space><gt><space><shift_expression>
-<relational_exp>	=	<relational_exp><space><lt><=><space><shift_expression>
-<relational_exp>	=	<relational_exp><space><gt><=><space><shift_expression>
-
-<shift_expression>	=	<additive_exp>
-<shift_expression>	=	<shift_expression><space><lt><lt><space><additive_exp>
-<shift_expression>	=	<shift_expression><space><gt><gt><space><additive_exp>
-
-<additive_exp>	=	<mult_exp>
-<additive_exp>	=	<additive_exp><space><+><space><mult_exp>
-<additive_exp>	=	<additive_exp><space><-><space><mult_exp>
-
-<mult_exp>	=	<cast_exp>
-<mult_exp>	=	<mult_exp><space><*><space><cast_exp>
-<mult_exp>	=	<mult_exp><space></><space><cast_exp>
-<mult_exp>	=	<mult_exp><space><%><space><cast_exp>
-
-<cast_exp>	=	<unary_exp>
-<cast_exp>	=	<(><space><type_name><space><right_paren><space><cast_exp>
-
-<unary_exp>	=	<postfix_exp>
-<unary_exp>	=	<+><+><space><unary_exp>
-<unary_exp>	=	<-><-><space><unary_exp>
-<unary_exp>	=	<unary_operator><space><cast_exp>
-<unary_exp>	=	<sizeof><space><unary_exp>
-<unary_exp>	=	<sizeof><space><(><space><type_name><space><right_paren>
+<unary_expression>	=	<postfix_expression>
+<unary_expression>	=	<INC_OP><space><unary_expression>
+<unary_expression>	=	<DEC_OP><space><unary_expression>
+<unary_expression>	=	<unary_operator><space><cast_expression>
+<unary_expression>	=	<SIZEOF><space><unary_expression>
+<unary_expression>	=	<SIZEOF><(><type_name><right_paran>
 
 <unary_operator>	=	<&>
 <unary_operator>	=	<*>
 <unary_operator>	=	<+>
 <unary_operator>	=	<->
 <unary_operator>	=	<~>
-<unary_operator>	=	<!>
+<unary_operator>	=	<ex>
 
-<postfix_exp>	=	<primary_exp>
-<postfix_exp>	=	<postfix_exp><space><[><space><exp><space><]>
-<postfix_exp>	=	<postfix_exp><space><(><space><argument_exp_list><space><right_paren>
-<postfix_exp>	=	<postfix_exp><space><(><space><right_paren>
-<postfix_exp>	=	<postfix_exp><space><.><space><id>
-<postfix_exp>	=	<postfix_exp><space><-><gt><space><id>
-<postfix_exp>	=	<postfix_exp><space><+><+>
-<postfix_exp>	=	<postfix_exp><space><-><->
+<cast_expression>	=	<unary_expression>
+<cast_expression>	=	<(><type_name><right_paran><cast_expression>
 
-<primary_exp>	=	<id>
-<primary_exp>	=	<const>
-<primary_exp>	=	<string>
-<primary_exp>	=	<(><space><exp><space><right_paren>
+<multiplicative_expression>	=	<cast_expression>
+<multiplicative_expression>	=	<multiplicative_expression><*><cast_expression>
+<multiplicative_expression>	=	<multiplicative_expression></><cast_expression>
+<multiplicative_expression>	=	<multiplicative_expression><%><cast_expression>
 
-<argument_exp_list>	=	<assignment_exp>
-<argument_exp_list>	=	<argument_exp_list><space><,><space><assignment_exp>
+<additive_expression>	=	<multiplicative_expression>
+<additive_expression>	=	<additive_expression><+><multiplicative_expression>
+<additive_expression>	=	<additive_expression><-><multiplicative_expression>
 
-<const>	=	<int_const>
-<const>	=	<char_const>
-<const>	=	<float_const>
-<const>	=	<enumeration_const>
+<shift_expression>	=	<additive_expression>
+<shift_expression>	=	<shift_expression><space><LEFT_OP><space><additive_expression>
+<shift_expression>	=	<shift_expression><space><RIGHT_OP><space><additive_expression>
 
-<for>	=	for
-<while>	=	while
-<if>	=	if
-<else>	=	else
-<goto>	=	goto
-<switch>	=	switch
-<id>	=	var<int min=0 max=100>
-<const>	=	const
-<int>	=	int
-<char>	=	char
-<float>	=	float
-<void>	=	void
-<short>	=	short
-<long>	=	long
-<double>	=	double
-<signed>	=	signed
-<unsigned>	=	unsigned
-<union>	=	union
-<struct>	=	struct
-<enum>	=	enum
-<typedef>	=	typedef
-<extern>	=	extern
-<static>	=	static
-<auto>	=	auto
-<register>	=	register
-<case>	=	case
-<sizeof>	=	sizeof
-<do>	=	do
-<char_const>	=	<const><space><char>
-<return>	=	return
-<volatile>	=	volatile
-<default>	=	default
-<int_const>	=	<const><space><int>
-<float_const>	=	<const><space><float>
-<continue>	=	continue
-<break>	=	break
-<enumeration_const>	=	<const><space><enum>
+<relational_expression>	=	<shift_expression>
+<relational_expression>	=	<relational_expression><lt><shift_expression>
+<relational_expression>	=	<relational_expression><gt><shift_expression>
+<relational_expression>	=	<relational_expression><space><LE_OP><space><shift_expression>
+<relational_expression>	=	<relational_expression><space><GE_OP><space><shift_expression>
+
+<equality_expression>	=	<relational_expression>
+<equality_expression>	=	<equality_expression><space><EQ_OP><space><relational_expression>
+<equality_expression>	=	<equality_expression><space><NE_OP><space><relational_expression>
+
+<and_expression>	=	<equality_expression>
+<and_expression>	=	<and_expression><&><equality_expression>
+
+<exclusive_or_expression>	=	<and_expression>
+<exclusive_or_expression>	=	<exclusive_or_expression><^><and_expression>
+
+<inclusive_or_expression>	=	<exclusive_or_expression>
+<inclusive_or_expression>	=	<inclusive_or_expression><|><exclusive_or_expression>
+
+<logical_and_expression>	=	<inclusive_or_expression>
+<logical_and_expression>	=	<logical_and_expression><space><AND_OP><space><inclusive_or_expression>
+
+<logical_or_expression>	=	<logical_and_expression>
+<logical_or_expression>	=	<logical_or_expression><space><OR_OP><space><logical_and_expression>
+
+<conditional_expression>	=	<logical_or_expression>
+<conditional_expression>	=	<logical_or_expression><?><expression><:><conditional_expression>
+
+<assignment_expression>	=	<conditional_expression>
+<assignment_expression>	=	<unary_expression><space><assignment_operator><space><assignment_expression>
+
+<assignment_operator>	=	<=>
+<assignment_operator>	=	<MUL_ASSIGN>
+<assignment_operator>	=	<DIV_ASSIGN>
+<assignment_operator>	=	<MOD_ASSIGN>
+<assignment_operator>	=	<ADD_ASSIGN>
+<assignment_operator>	=	<SUB_ASSIGN>
+<assignment_operator>	=	<LEFT_ASSIGN>
+<assignment_operator>	=	<RIGHT_ASSIGN>
+<assignment_operator>	=	<AND_ASSIGN>
+<assignment_operator>	=	<XOR_ASSIGN>
+<assignment_operator>	=	<OR_ASSIGN>
+
+<expression>	=	<assignment_expression>
+<expression>	=	<expression><,><assignment_expression>
+
+<constant_expression>	=	<conditional_expression>
+
+<declaration>	=	<declaration_specifiers><;>
+<declaration>	=	<declaration_specifiers><space><init_declarator_list><;>
+
+<declaration_specifiers>	=	<storage_class_specifier>
+<declaration_specifiers>	=	<storage_class_specifier><space><declaration_specifiers>
+<declaration_specifiers>	=	<type_specifier>
+<declaration_specifiers>	=	<type_specifier><space><declaration_specifiers>
+<declaration_specifiers>	=	<type_qualifier>
+<declaration_specifiers>	=	<type_qualifier><space><declaration_specifiers>
+
+<init_declarator_list>	=	<init_declarator>
+<init_declarator_list>	=	<init_declarator_list><,><init_declarator>
+
+<init_declarator>	=	<declarator>
+<init_declarator>	=	<declarator><=><initializer>
+
+<storage_class_specifier>	=	<TYPEDEF>
+<storage_class_specifier>	=	<EXTERN>
+<storage_class_specifier>	=	<STATIC>
+<storage_class_specifier>	=	<AUTO>
+<storage_class_specifier>	=	<REGISTER>
+
+<type_specifier>	=	<VOID>
+<type_specifier>	=	<CHAR>
+<type_specifier>	=	<SHORT>
+<type_specifier>	=	<INT>
+<type_specifier>	=	<LONG>
+<type_specifier>	=	<FLOAT>
+<type_specifier>	=	<DOUBLE>
+<type_specifier>	=	<SIGNED>
+<type_specifier>	=	<UNSIGNED>
+<type_specifier>	=	<struct_or_union_specifier>
+<type_specifier>	=	<enum_specifier>
+<type_specifier>	=	<TYPE_NAME>
+
+<struct_or_union_specifier>	=	<struct_or_union><space><IDENTIFIER><{><struct_declaration_list><}>
+<struct_or_union_specifier>	=	<struct_or_union><{><struct_declaration_list><}>
+<struct_or_union_specifier>	=	<struct_or_union><space><IDENTIFIER>
+
+<struct_or_union>	=	<STRUCT>
+<struct_or_union>	=	<UNION>
+
+<struct_declaration_list>	=	<struct_declaration>
+<struct_declaration_list>	=	<struct_declaration_list><space><struct_declaration>
+
+<struct_declaration>	=	<specifier_qualifier_list><space><struct_declarator_list><;>
+
+<specifier_qualifier_list>	=	<type_specifier><space><specifier_qualifier_list>
+<specifier_qualifier_list>	=	<type_specifier>
+<specifier_qualifier_list>	=	<type_qualifier><space><specifier_qualifier_list>
+<specifier_qualifier_list>	=	<type_qualifier>
+
+<struct_declarator_list>	=	<struct_declarator>
+<struct_declarator_list>	=	<struct_declarator_list><,><struct_declarator>
+
+<struct_declarator>	=	<declarator>
+<struct_declarator>	=	<:><constant_expression>
+<struct_declarator>	=	<declarator><:><constant_expression>
+
+<enum_specifier>	=	<ENUM><{><enumerator_list><}>
+<enum_specifier>	=	<ENUM><space><IDENTIFIER><{><enumerator_list><}>
+<enum_specifier>	=	<ENUM><space><IDENTIFIER>
+
+<enumerator_list>	=	<enumerator>
+<enumerator_list>	=	<enumerator_list><,><enumerator>
+
+<enumerator>	=	<IDENTIFIER>
+<enumerator>	=	<IDENTIFIER><=><constant_expression>
+
+<type_qualifier>	=	<CONST>
+<type_qualifier>	=	<VOLATILE>
+
+<declarator>	=	<pointer><space><direct_declarator>
+<declarator>	=	<direct_declarator>
+
+<direct_declarator>	=	<IDENTIFIER>
+<direct_declarator>	=	<(><declarator><right_paran>
+<direct_declarator>	=	<direct_declarator><[><constant_expression><]>
+<direct_declarator>	=	<direct_declarator><[><]>
+<direct_declarator>	=	<direct_declarator><(><parameter_type_list><right_paran>
+<direct_declarator>	=	<direct_declarator><(><identifier_list><right_paran>
+<direct_declarator>	=	<direct_declarator><(><right_paran>
+
+<pointer>	=	<*>
+<pointer>	=	<*><type_qualifier_list>
+<pointer>	=	<*><pointer>
+<pointer>	=	<*><type_qualifier_list><space><pointer>
+
+<type_qualifier_list>	=	<type_qualifier>
+<type_qualifier_list>	=	<type_qualifier_list><space><type_qualifier>
+
+<parameter_type_list>	=	<parameter_list>
+<parameter_type_list>	=	<parameter_list><,><ELLIPSIS>
+
+<parameter_list>	=	<parameter_declaration>
+<parameter_list>	=	<parameter_list><,><parameter_declaration>
+
+<parameter_declaration>	=	<declaration_specifiers><space><declarator>
+<parameter_declaration>	=	<declaration_specifiers><space><abstract_declarator>
+<parameter_declaration>	=	<declaration_specifiers>
+
+<identifier_list>	=	<IDENTIFIER>
+<identifier_list>	=	<identifier_list><,><IDENTIFIER>
+
+<type_name>	=	<specifier_qualifier_list>
+<type_name>	=	<specifier_qualifier_list><space><abstract_declarator>
+
+<abstract_declarator>	=	<pointer>
+<abstract_declarator>	=	<direct_abstract_declarator>
+<abstract_declarator>	=	<pointer><space><direct_abstract_declarator>
+
+<direct_abstract_declarator>	=	<(><abstract_declarator><right_paran>
+<direct_abstract_declarator>	=	<[><]>
+<direct_abstract_declarator>	=	<[><constant_expression><]>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><[><]>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><[><constant_expression><]>
+<direct_abstract_declarator>	=	<(><right_paran>
+<direct_abstract_declarator>	=	<(><parameter_type_list><right_paran>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><(><right_paran>
+<direct_abstract_declarator>	=	<direct_abstract_declarator><(><parameter_type_list><right_paran>
+
+<initializer>	=	<assignment_expression>
+<initializer>	=	<{><initializer_list><}>
+<initializer>	=	<{><initializer_list><,><}>
+
+<initializer_list>	=	<initializer>
+<initializer_list>	=	<initializer_list><,><initializer>
+
+<statement>	=	<labeled_statement>
+<statement>	=	<compound_statement>
+<statement>	=	<expression_statement>
+<statement>	=	<selection_statement>
+<statement>	=	<iteration_statement>
+<statement>	=	<jump_statement>
+
+<labeled_statement>	=	<IDENTIFIER><:><statement>
+<labeled_statement>	=	<CASE><space><constant_expression><:><statement>
+<labeled_statement>	=	<DEFAULT><:><statement>
+
+<compound_statement>	=	<{><}>
+<compound_statement>	=	<{><statement_list><}>
+<compound_statement>	=	<{><declaration_list><}>
+<compound_statement>	=	<{><declaration_list><space><statement_list><}>
+
+<declaration_list>	=	<declaration>
+<declaration_list>	=	<declaration_list><space><declaration>
+
+<statement_list>	=	<statement>
+<statement_list>	=	<statement_list><space><statement>
+
+<expression_statement>	=	<;>
+<expression_statement>	=	<expression><;>
+
+<selection_statement>	=	<IF><(><expression><right_paran><statement>
+<selection_statement>	=	<IF><(><expression><right_paran><statement><space><ELSE><space><statement>
+<selection_statement>	=	<SWITCH><(><expression><right_paran><statement>
+
+<iteration_statement>	=	<WHILE><(><expression><right_paran><statement>
+<iteration_statement>	=	<DO><space><statement><space><WHILE><(><expression><right_paran><;>
+<iteration_statement>	=	<FOR><(><expression_statement><space><expression_statement><right_paran><statement>
+<iteration_statement>	=	<FOR><(><expression_statement><space><expression_statement><space><expression><right_paran><statement>
+
+<jump_statement>	=	<GOTO><space><IDENTIFIER><;>
+<jump_statement>	=	<CONTINUE><;>
+<jump_statement>	=	<BREAK><;>
+<jump_statement>	=	<RETURN><;>
+<jump_statement>	=	<RETURN><space><expression><;>
+
+<translation_unit>	=	<external_declaration>
+<translation_unit>	=	<translation_unit><space><external_declaration>
+
+<external_declaration>	=	<function_definition>
+<external_declaration>	=	<declaration>
+
+<function_definition>	=	<declaration_specifiers><space><declarator><space><declaration_list><space><compound_statement>
+<function_definition>	=	<declaration_specifiers><space><declarator><space><compound_statement>
+<function_definition>	=	<declarator><space><declaration_list><space><compound_statement>
+<function_definition>	=	<declarator><space><compound_statement>
+
+<^>	=	^
+<LEFT_OP>	=	<lt><lt>
+<STRUCT>	=	struct
+<:>	=	:
+<SIGNED>	=	signed
+<UNION>	=	union
+<STATIC>	=	static
+<CONST>	=	const
+<AND_OP>	=	&&
+<RIGHT_OP>	=	<gt><gt>
+<ELSE>	=	else
+<EXTERN>	=	extern
+<WHILE>	=	while
+<LEFT_ASSIGN>	=	<lt><eq>
+<;>	=	;
+<RIGHT_ASSIGN>	=	<gt><eq>
+<AND_ASSIGN>	=	&<eq>
+<*>	=	*
+<GE_OP>	=	<gt><eq>
+<INT>	=	int
+<AUTO>	=	auto
+<MOD_ASSIGN>	=	%<eq>
+<+>	=	+
+<DO>	=	do
+<IF>	=	if
+<VOLATILE>	=	volatile
+<ELLIPSIS>	=	...
+<%>	=	%
+<CASE>	=	case
+<RETURN>	=	return
+<SUB_ASSIGN>	=	-<eq>
+<ADD_ASSIGN>	=	+<eq>
+<=>	=	<eq>
+<XOR_ASSIGN>	=	^<eq>
+<BREAK>	=	break
+<,>	=	,
+<PTR_OP>	=	.<gt>
+<&>	=	&
+<{>	=	{
+<{>	=	<lt>%
+<DEC_OP>	=	--
+<ENUM>	=	enum
+<CONTINUE>	=	continue
+<REGISTER>	=	register
+<->	=	-
+<CHAR>	=	char
+<VOID>	=	void
+<SIZEOF>	=	sizeof
+<LONG>	=	long
+<DIV_ASSIGN>	=	/<eq>
+<?>	=	?
+<TYPE_NAME>	=	type_name
+<EQ_OP>	=	<eq><eq>
+<.>	=	.
+<OR_OP>	=	||
+<SWITCH>	=	switch
+<TYPEDEF>	=	typedef
+<SHORT>	=	short
+<GOTO>	=	goto
+<FOR>	=	for
+<}>	=	}
+<}>	=	%<gt>
+</>	=	/
+<[>	=	[
+<[>	=	<lt>:
+<UNSIGNED>	=	unsigned
+<MUL_ASSIGN>	=	*<eq>
+<DOUBLE>	=	double
+<]>	=	:<gt>
+<]>	=	]
+<INC_OP>	=	++
+<FLOAT>	=	float
+<OR_ASSIGN>	=	|<eq>
+<~>	=	~
+<(>	=	(
+<DEFAULT>	=	default
+<NE_OP>	=	<ex><eq>
+<IDENTIFIER>	=	identifier
+<LE_OP>	=	<lt><eq>
+<|>	=	|
+
+
+<x> 	=	x
+<x>	=	X
+
+<H>	=	<hex>
+<H>	=	<hex><H>
+
+<IS>	=	u
+<IS>	=	U
+<IS>	=	l
+<IS>	=	L
+<IS>	=	<IS><IS>
+<IS>	=	
+
+<D>	=	<int min=0 max=9>
+<D>	=	<D><D>
+
+
+<L>	=	<valid_alphabet>
+<L>	=	
+
+<quote>	=	\<char>
+<quote>	=	<any bad="\'">
+<quote>	=	<quote><quote>
+
+<quote2>	=	\<char>
+<quote2>	=	<any bad='\"'>
+<quote2>	=	<quote><quote>
+
+<e>	=	e
+<e>	=	E
+
+<sign>	=	+
+<sign>	=	-
+
+<E>	=	<e><sign><D>
+
+<E2>	=	<E>
+<E2>	=	
+
+<D2>	=	<D>
+<D2>	=	
+
+<FS>	=	f
+<FS>	=	F
+<FS>	=	l
+<FS>	=	L
+<FS>	=	
+
+
+
+
+
+
+### custom constant types
+
+
+<CONSTANT>	=	0<x><H><IS>
+<CONSTANT>	=	0<D><IS>
+<CONSTANT>	=	<D><IS>
+<CONSTANT>	=	<L>'<quote>
+
+<CONSTANT>	=	<D><E><FS>
+<CONSTANT>	=	<D2>.<D><E2><FS>
+<CONSTANT>	=	<D>.<D2><E2><FS>
+
+<STRING_LITERAL>	=	<L>"<quote2>"
+
+<IDENTIFIER>	=	<valid_alphabet><string>
 
 ### LINES
 
 !begin lines
 
-<stat>
+<translation_unit>
 
 !end lines
 
