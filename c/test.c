@@ -17,15 +17,15 @@ typedef struct templateStruct{
 // <C GLOBAL FUZZING>
 int main(int argc, char**argv)
 {
-	type_name const extern float; (**volatile volatile volatile (((*const hK59vaNk4pVC4CxFR1hiX()())()(9a_aaDRop9gViJVGKYMefXy2NfNr,Oa0or8lCX_It)))) auto; {type_name short static volatile IQ9nQh0Ci(vkienJP6Gz); default:{{}}} typedef;
-static mhxq8Q6GlANvLdyPS7Bdj_usLZXgESV[],(LrJa3DEPC4kUp42M9YB7rXFF7a);
-register (NzO880uqCQ4p1uDtmmGmnXMNnEo1())()()(aUXGYHJZubQiJoS7RG8CykIaKrFh8O,wUxl) int ((** (((*const (bXywqtKtZm2_j5QmNp4G[]))())(ncchmza5C6nrxSRcw,MJgwtS5fcrBmzMw,MpfbhOFZVT4X3rwUmKgaaEIcn)(63jzKv0PVqzS3YQITSd,WzkzPt3Tggg8yvavmpg_z,ioBQ0LZT9JeVKJwIPl5V1gzcRMjx))[]))(HXia,mxWaF6r,MQm5UxNEWJ)(),*const const *volatile volatile const const const const (Q[](BWfcmwkpJ9SzVatYmLIc_b8e_02E)()()[]()(8ZNk_ysXo79,UyJ2tCVb6QQT1eYWZhItH,e0)); {;} typedef; extern const auto * Nq3RuYekFUiLR3KzzXEGl[] {}
-auto auto *volatile ** (** (((*volatile volatile *const *volatile const *const **volatile * 7_NG3DHbWX()[]))))() {} *const const *volatile ** pqji46tU unsigned const; {auto cf0WvHO_0Ywf8JfZonQIp6sqfK[](),* 3BjCtYaZibeqvg7xWwFYYwb(9d9FCPtD5Ot)(); extern const; return;}
-volatile (**volatile volatile (jkojoRs5mG09FiRXGF99glAA()[]))(const,typedef volatile)(float const *const volatile ***,const *const volatile const,union GNVH15UlYmFixy4kt4YfmNF2y typedef,const *const PP0zMyhZZcpx()[],volatile unsigned volatile short * ((T9wIYAmyX0B4tt0Qh8NihM)(M)(9A6)[][]())(short int volatile,...),...)[] {return;}
-enum xSHdZMY8; ((Tf2lOZhHiW1U7LUyKg335cE1RXli2(register,const,...))(MGJwdFUzoJfESWKsehmD)(mahWjC46gTYyR_I,XpJr7g8,ZuTyOxJigTNfXiJf9))(g85Y2H7xK0n)()()(UgBLXme,H_OK8eGAdx5u,5obAcIU7ucgkK2wMYAj,Hf8TjDCrHW732ptw9RK) register volatile; type_name AmXKJVS72n7tYY6PXLf; const; {double *const const p196i0jf; volatile; typedef long volatile const; ; goto QKf7nt3;}
-static int; long *const volatile *const const const 25Q7(auto volatile * ((cluNo()[])(const const,...))(),volatile,...) {}
-register b3OovLPMbKmGBZci;
-oTdpf3ppRKt3EvRHj long; {union MzVlJWFs01 unsigned; ;} enum{THSSSOaFtHAbhezy6j2DsJk_QJg73,QOTEVZPPiLBBMqjES3,kerIoqa6UKv52xdNUqJf5aQD2N} uONBr22ol6nfMAS(KY5uqJTItTM08D_xzJsh,cUirB9u); Er1L7IPaGfcyOotN[][][] {auto extern; extern;}
-const extern;
+	int register volatile;
+const int auto; extern char static static void; *volatile const volatile *const (((*volatile * ETJbnapkHYp)(lf,MEN2c1Dcsewl9Ak5RP7F)[]()(register,int *const *volatile))) enum LY8jpWFeJ5g{kEQKXJdWm1NSGp6,I2YLqWQiHS,EeASA8lwN0LBK_Tsw%> unsigned T7p9MNqOeuwGW5m1Jn5FysoaYMI1 ****const const const * ((((**volatile volatile const const const const * (**const const volatile * (*volatile (((**const yc1W7A_))<::>)))[:>)))[:>); <%volatile extern void;%>
+const long const const **volatile const zK0DpKBuOmQ6C94xzBzNZlTrl1 {;%>
+volatile; const; (bc0RayucdinHlPfvhSEKYAGwzryW)(Qr1W)(Ia6Q) auto lUD2LM9u3Lq3elsd3DrR7n0(char volatile extern); <%}
+volatile const auto;
+double * fSZy8H5 static; volatile const enum nqciS6HASpGkHhoLw{uole0sWCfqqOi6MFFqG}; <%typedef const;} auto unsigned;
+const;
+const izrzxD6qH6MUcj65KkjWMwN_9dauK6 float volatile; <%}
+CaKFQ0EhIO7gkRoB1_MNb0l33ypS5MK(unsigned *const,register * (YEAW0rpOOs6PqTMNby1RjBVw1M)[:>()())(JI130j7uWsDN5GabnAcfAEZ,A9f8yzcAuV,d68P9)(volatile volatile *const const const)(sRcI,FWlLmd7Guv7w0YL0l60RTunVC4SR4ZT,hVGGtkAbs0OkvIu,rWV3mz75c)<::>()(Ef6HN,FDhiHWmckQSsf,sJAAF8V3Ei29gvNfz3WavBGWMw) volatile volatile auto; void volatile *const const *volatile volatile volatile (gwyOj())()[](F6uDfRYRsq9qn1aFpQ,Am3eF9vxyIUo8ldePa)(const,float *const volatile *,extern const volatile Tcwi0Y(DhJhD5_Z,MM19aDaErqfWNv769ZBJQmMdLYppxdi)(char)(typedef u5ohrSp9JrvVb4V0vYE2fsLqFSbPd volatile unsigned,...)()())[](short JQ5ZsDY8c3r8u<:]); register; <%break; <%%>%>
+short const;
 	return 0;
 }

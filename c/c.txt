@@ -8,6 +8,7 @@
 <postfix_expression>	=	<postfix_expression><[><expression><]>
 <postfix_expression>	=	<postfix_expression><(><right_paran>
 <postfix_expression>	=	<postfix_expression><(><argument_expression_list><right_paran>
+<postfix_expression>	=	<FUNCTION_CALL>
 <postfix_expression>	=	<postfix_expression><.><IDENTIFIER>
 <postfix_expression>	=	<postfix_expression><space><PTR_OP><space><IDENTIFIER>
 <postfix_expression>	=	<postfix_expression><space><INC_OP>
@@ -324,7 +325,7 @@
 <LONG>	=	long
 <DIV_ASSIGN>	=	/<eq>
 <?>	=	?
-<TYPE_NAME>	=	type_name
+<TYPE_NAME>	=	<IDENTIFIER>
 <EQ_OP>	=	<eq><eq>
 <.>	=	.
 <OR_OP>	=	||
@@ -350,7 +351,6 @@
 <(>	=	(
 <DEFAULT>	=	default
 <NE_OP>	=	<ex><eq>
-<IDENTIFIER>	=	identifier
 <LE_OP>	=	<lt><eq>
 <|>	=	|
 
@@ -403,7 +403,23 @@
 <FS>	=	L
 <FS>	=	
 
-
+### Functions
+### memset
+### memcpy
+### memcmp
+### strcmp
+### strcpy
+### atoi 
+### strcat
+###
+###
+<FUNCTION_CALL>	=	memset(<postfix_expression>,<postfix_expression>,<postfix_expression>);
+<FUNCTION_CALL>	=	memcpy(<postfix_expression>,<postfix_expression>,<postfix_expression>);
+<FUNCTION_CALL>	=	memcmp(<postfix_expression>,<postfix_expression>,<postfix_expression>);
+<FUNCTION_CALL>	=	strcmp(<postfix_expression>,<postfix_expression>);
+<FUNCTION_CALL>	=	strcpy(<postfix_expression>,<postfix_expression>);
+<FUNCTION_CALL>	=	atoi(<postfix_expression>);
+<FUNCTION_CALL>	=	strcat(<postfix_expression>,<postfix_expression>);
 
 
 
