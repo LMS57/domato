@@ -128,31 +128,19 @@ class Grammar(object):
             'lf': chr(10),
             'space': ' ',
             'tab': chr(9),
-            '!': '!',
-            '(': '(',
-            'right_paren': ')',
-            '{': '{',
-            '}': '}',
-            '[': '[',
-            ']': ']',
-            '&': '&',
-            '*': '*',
-            '-': '-',
-            '+': '+',
-            '=': '=',
-            '/': '/',
-            '?': '?',
-            '.': '.',
-            ',': ',',
-            '|': '|',
-            '^': '^',
-            '~': '~',
-            ':': ':',
-            ';': ';',
-            '%': '%',
-        }
+            'ex': '!',
+            'eq': '=',
+            'right_paran': ')',
 
+        }
         self._built_in_types = {
+            'int': self._generate_int,
+            'valid_alphabet': self._valid_alphabet,
+            'any': self._generate_any,
+            'hex': self._generate_hex,
+            'string': self._valid_alphabet2,
+        }
+        '''
             'int': self._generate_int,
             'int32': self._generate_int,
             'uint32': self._generate_int,
@@ -165,12 +153,10 @@ class Grammar(object):
             'float': self._generate_float,
             'double': self._generate_float,
             'char': self._generate_char,
-            'string': self._generate_string,
-            'hex': self._generate_hex,
             'import': self._generate_import,
             'lines': self._generate_lines
         }
-
+        '''
         self._command_handlers = {
             'varformat': self._set_variable_format,
             'include': self._include_from_file,
@@ -183,6 +169,19 @@ class Grammar(object):
 
     def _string_to_int(self, s):
         return int(s, 0)
+    
+    def _valid_alphabet(self, tag):
+        alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_'
+        return alphabet[random.randint(0,52)]
+
+    def _valid_alphabet2(self, tag):
+        alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'
+        minlen = 1
+        maxlen = 31
+        length = random.randint(minlen, maxlen)
+        charset = range(0, len(alphabet))
+        ret_list = [alphabet[int(random.random() * len(charset))] for _ in range(length)]
+        return ''.join(ret_list)
 
     def _generate_int(self, tag):
         """Generates integer types."""
@@ -237,6 +236,13 @@ class Grammar(object):
             raise GrammarError('Range error in char tag')
         return chr(random.randint(min_value, max_value))
 
+    def _generate_any(self,tag):
+        bad = tag.get('bad','')
+        minchar = 32
+        maxchar = 127
+        return chr(random.randint(minchar,maxchar))
+
+    
     def _generate_string(self, tag):
         """Generates a random string."""
         min_value = self._string_to_int(tag.get('min', '32'))

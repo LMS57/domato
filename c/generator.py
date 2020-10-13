@@ -36,7 +36,7 @@ def generate_new_sample(template, cgrammar):
 
     Args:
       template: A template string.
-      phpgrammar: Grammar for generating PHPcode.
+      cgrammar: Grammar for generating PHPcode.
 
     Returns:
       A string containing sample data.
@@ -71,14 +71,14 @@ def generate_samples(grammar_dir, outfiles):
     template = f.read()
     f.close()
 
-    phpgrammar = Grammar()
-    err = phpgrammar.parse_from_file(os.path.join(grammar_dir, 'c.txt'))#reads in grammar
+    cgrammar = Grammar()
+    err = cgrammar.parse_from_file(os.path.join(grammar_dir, 'c.txt'))#reads in grammar
     if err > 0:
         print('There were errors parsing grammar')
         return
 
     for outfile in outfiles:
-        result = generate_new_sample(template, phpgrammar)
+        result = generate_new_sample(template, cgrammar)
 
         if result is not None:
             print('Writing a sample to ' + outfile)
@@ -123,7 +123,7 @@ def main():
 
         outfiles = []
         for i in range(nsamples):
-            outfiles.append(os.path.join(out_dir, 'fuzz-' + str(i).zfill(5) + '.php'))
+            outfiles.append(os.path.join(out_dir, 'fuzz-' + str(i).zfill(5) + '.c'))
 
         generate_samples(fuzzer_dir, outfiles)
 
