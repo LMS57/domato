@@ -1,3 +1,4 @@
+<root root=true> = <lines count=1>
 
 <primary_expression>	=	<IDENTIFIER>
 <primary_expression>	=	<CONSTANT>
@@ -128,9 +129,9 @@
 <type_specifier>	=	<UNSIGNED>
 <type_specifier>	=	<struct_or_union_specifier>
 <type_specifier>	=	<enum_specifier>
-<type_specifier>	=	<TYPE_NAME>
+###<type_specifier>	=	<TYPE_NAME>
 
-<struct_or_union_specifier>	=	<struct_or_union><space><IDENTIFIER><{><struct_declaration_list><}>
+<struct_or_union_specifier>	=	<struct_or_union><space><IDENTIFIER2><{><struct_declaration_list><}>
 <struct_or_union_specifier>	=	<struct_or_union><{><struct_declaration_list><}>
 <struct_or_union_specifier>	=	<struct_or_union><space><IDENTIFIER>
 
@@ -155,8 +156,8 @@
 <struct_declarator>	=	<declarator><:><constant_expression>
 
 <enum_specifier>	=	<ENUM><{><enumerator_list><}>
-<enum_specifier>	=	<ENUM><space><IDENTIFIER><{><enumerator_list><}>
-<enum_specifier>	=	<ENUM><space><IDENTIFIER>
+<enum_specifier>	=	<ENUM><space><IDENTIFIER2><{><enumerator_list><}>
+<enum_specifier>	=	<ENUM><space><IDENTIFIER2>
 
 <enumerator_list>	=	<enumerator>
 <enumerator_list>	=	<enumerator_list><,><enumerator>
@@ -170,13 +171,27 @@
 <declarator>	=	<pointer><space><direct_declarator>
 <declarator>	=	<direct_declarator>
 
-<direct_declarator>	=	<IDENTIFIER>
+<direct_declarator>	=	<IDENTIFIER2>
 <direct_declarator>	=	<(><declarator><right_paran>
 <direct_declarator>	=	<direct_declarator><[><constant_expression><]>
 <direct_declarator>	=	<direct_declarator><[><]>
 <direct_declarator>	=	<direct_declarator><(><parameter_type_list><right_paran>
 <direct_declarator>	=	<direct_declarator><(><identifier_list><right_paran>
 <direct_declarator>	=	<direct_declarator><(><right_paran>
+
+### Treat parameters as different
+
+<param_declarator>	=	<pointer><space><param_direct_declarator>
+<param_declarator>	=	<param_direct_declarator>
+
+<param_direct_declarator>	=	<IDENTIFIER3>
+<param_direct_declarator>	=	<(><param_declarator><right_paran>
+<param_direct_declarator>	=	<param_direct_declarator><[><constant_expression><]>
+<param_direct_declarator>	=	<param_direct_declarator><[><]>
+<param_direct_declarator>	=	<param_direct_declarator><(><parameter_type_list><right_paran>
+<param_direct_declarator>	=	<param_direct_declarator><(><identifier_list><right_paran>
+<param_direct_declarator>	=	<param_direct_declarator><(><right_paran>
+
 
 <pointer>	=	<*>
 <pointer>	=	<*><type_qualifier_list>
@@ -192,7 +207,7 @@
 <parameter_list>	=	<parameter_declaration>
 <parameter_list>	=	<parameter_list><,><parameter_declaration>
 
-<parameter_declaration>	=	<declaration_specifiers><space><declarator>
+<parameter_declaration>	=	<declaration_specifiers><space><param_declarator>
 <parameter_declaration>	=	<declaration_specifiers><space><abstract_declarator>
 <parameter_declaration>	=	<declaration_specifiers>
 
@@ -230,7 +245,7 @@
 <statement>	=	<iteration_statement>
 <statement>	=	<jump_statement>
 
-<labeled_statement>	=	<IDENTIFIER><:><statement>
+<labeled_statement>	=	<IDENTIFIER2><:><statement>
 <labeled_statement>	=	<CASE><space><constant_expression><:><statement>
 <labeled_statement>	=	<DEFAULT><:><statement>
 
@@ -325,7 +340,13 @@
 <LONG>	=	long
 <DIV_ASSIGN>	=	/<eq>
 <?>	=	?
-<TYPE_NAME>	=	<IDENTIFIER>
+
+### TODO custom types
+###<TYPE_NAME>	=	<IDENTIFIER>
+
+
+
+
 <EQ_OP>	=	<eq><eq>
 <.>	=	.
 <OR_OP>	=	||
@@ -421,11 +442,7 @@
 <FUNCTION_CALL>	=	atoi(<postfix_expression>);
 <FUNCTION_CALL>	=	strcat(<postfix_expression>,<postfix_expression>);
 
-
-
-
 ### custom constant types
-
 
 <CONSTANT>	=	0<x><H><IS>
 <CONSTANT>	=	0<D><IS>
@@ -438,13 +455,34 @@
 
 <STRING_LITERAL>	=	<L>"<quote2>"
 
-<IDENTIFIER>	=	<valid_alphabet><string>
+<IDENTIFIER>	=	<call function=find_variable>
+
+<IDENTIFIER2>	=	<call function=create_variable>
+
+<IDENTIFIER3>	=	<valid_alphabet><string>
+
+!begin function find_variable
+	import random
+	ret_val = context['custom'][random.randint(0,len(context['custom'])-1)]	
+!end function
+
+!begin function create_variable
+	if "custom" not in attributes:
+		alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_0123456789'
+		import random
+		length = random.randint(0,30)
+		ret_val = alphabet[random.randint(0,53)]+"".join([alphabet[int(random.random()*len(alphabet))] for _ in range(length)])
+	else:
+		ret_val = attributes['custom']
+	context['custom'].append(ret_val)
+!end function
 
 ### LINES
-
 !begin lines
+
+###<IDENTIFIER2 beforeoutput=init>
+###<IDENTIFIER>
 
 <translation_unit>
 
 !end lines
-

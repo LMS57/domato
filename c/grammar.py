@@ -306,6 +306,7 @@ class Grammar(object):
             'lastvar': last_var,
             'lines': [],
             'variables': {},
+            'custom':["templateFunction","templateStruct","zero","one","neg","max","min","single","byte","s","t","u","v"],
             'interesting_lines': [],
             'force_var_reuse': False
         }
