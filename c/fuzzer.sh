@@ -3,7 +3,7 @@
 FUZZDIR=/fuzz
 SAVEDIR=/savedtests
 LOG=/fuzzlog
-TIMEOUT=3
+TIMEOUT=5
 
 savecounter=0
 
@@ -17,7 +17,7 @@ while true; do
 	TEST=$(ls $FUZZDIR/ | head -n1)
 
 
-	OUTPUT=$(timeout -s SIGTERM $TIMEOUT gcc -pass-exit-codes -o /tmp/a.out $FUZZDIR/$TEST 2>&1)
+	OUTPUT=$(timeout -s SIGTERM $TIMEOUT gcc -pass-exit-codes -o /tmp/a.out $FUZZDIR/$TEST 2>/dev/null)
 	RET=$?
 
 	if [ $RET -ne 1 ]; then
