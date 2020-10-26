@@ -17,7 +17,7 @@ while true; do
 	TEST=$(ls $FUZZDIR/ | head -n1)
 
 
-	OUTPUT=$(timeout -s SIGTERM $TIMEOUT gcc -pass-exit-codes -o /tmp/a.out $FUZZDIR/$TEST 2>/dev/null)
+	OUTPUT=$(gcc -pass-exit-codes -o /tmp/a.out $FUZZDIR/$TEST 2>/dev/null)
 	RET=$?
 
 	if [ $RET -ne 1 ]; then
