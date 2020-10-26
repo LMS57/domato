@@ -23,22 +23,22 @@ while true; do
 	if [ $RET -ne 1 ]; then
 
 		if [ $RET -eq 0 ]; then
-			echo "COMPILATION SUCCESS $TEST" >> $log
+			echo "COMPILATION SUCCESS $TEST" >> $LOG
 
 		elif [ $RET -eq 4 ]; then
-			echo "C FRONTEND COMPILER ERROR $TEST" >> $log
+			echo "C FRONTEND COMPILER ERROR $TEST" >> $LOG
 
 		elif [ $RET -eq 124 ]; then
-			echo "TIMEOUT $TEST" >> $log
+			echo "TIMEOUT $TEST" >> $LOG
 
 		elif [ $RET -eq 153 ]; then
-			echo "MEMORY LEAK $TEST" >> $log
+			echo "MEMORY LEAK $TEST" >> $LOG
 
 		elif [ $RET -eq 255 ]; then
-			echo "EXCEPTION $TEST" >> $log
+			echo "EXCEPTION $TEST" >> $LOG
 		
 		else
-			echo -e "\e[31;1mUNKNOWN CRASH (ret:$RET)\e[0m $TEST" >> $log
+			echo -e "\e[31;1mUNKNOWN CRASH (ret:$RET)\e[0m $TEST" >> $LOG
 		fi
 
 		mv $FUZZDIR/$TEST $SAVEDIR/$savecounter:$RET.c
