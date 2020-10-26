@@ -26,10 +26,10 @@ while true; do
 
 	echo "----------------------------"
 
-	NUMCRASHES=$(ls /fuzz/crashes/ | wc -l)
-	echo ""
-	echo -e "Crashes: $RED$NUMCRASHES$DEFAULT"
-	echo ""
+	# NUMCRASHES=$(ls /fuzz/crashes/ | wc -l)
+	# echo ""
+	# echo -e "Crashes: $RED$NUMCRASHES$DEFAULT"
+	# echo ""
 
 	sleep 3
 
