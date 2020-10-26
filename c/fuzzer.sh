@@ -28,9 +28,6 @@ while true; do
 		elif [ $RET -eq 4 ]; then
 			echo "C FRONTEND COMPILER ERROR $TEST" >> $LOG
 
-		elif [ $RET -eq 124 ]; then
-			echo "TIMEOUT $TEST" >> $LOG
-
 		elif [ $RET -eq 153 ]; then
 			echo "MEMORY LEAK $TEST" >> $LOG
 
