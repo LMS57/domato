@@ -21,7 +21,7 @@ while true; do
 	if [ $COUNT -lt 200 ]; then
 		let nummake=1000-$COUNT
 		echo -e "   - ${PURPLE}generating more...$DEFAULT"
-		python3 /root/domato/c/generator.py --output_dir /fuzz/ --no_of_files $nummake >/dev/null 2>&1 &
+		python3 /root/domato/c/generator.py --output_dir /fuzz/ --no_of_files $nummake >/dev/null 2>&1
 	fi
 
 	echo "----------------------------"
